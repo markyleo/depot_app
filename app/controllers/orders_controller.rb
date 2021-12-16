@@ -24,10 +24,13 @@ class OrdersController < ApplicationController
 
   # POST /orders or /orders.json
   def create
+    #byebug
     @order = Order.new(order_params)
+    #byebug
     @order.add_line_items_from_cart(@cart)
 
     respond_to do |format|
+      #byebug 
       if @order.save
         Cart.destroy(session[:cart_id])
         session[:cart_id] = nil
