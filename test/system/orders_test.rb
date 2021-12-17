@@ -1,6 +1,8 @@
 require "application_system_test_case"
 
 class OrdersTest < ApplicationSystemTestCase
+  include ActiveJob::TestHelper
+
   setup do
     @order = orders(:one)
   end
@@ -48,6 +50,10 @@ class OrdersTest < ApplicationSystemTestCase
   end
 
   test "check routing number" do
+
+    LineItem.delete_all
+    Order.delete_all
+
     visit store_index_url
   
     first('.catalog li').click_on 'Add to Cart'
@@ -63,6 +69,14 @@ class OrdersTest < ApplicationSystemTestCase
     select 'Check', from: 'pay_type'
     
     assert_selector "#order_routing_number"
+
+    fill_in "Routing #", with: "123456"
+    fill_in "Account #", with: "987654"
+
+  end
+
+  perform_enqueued_jobs do
+    click_button "Place Order"
   end
 
 end
