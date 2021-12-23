@@ -1,8 +1,8 @@
-require 'active_model/serializers/xml'
+#require 'active_model/serializers/xml'
 require 'pago'
 
 class Order < ApplicationRecord
-    include ActiveModel::Serializers::Xml
+    #include ActiveModel::Serializers::Xml
 
     enum pay_type: {
         "Check" => 0,
@@ -42,9 +42,9 @@ class Order < ApplicationRecord
             when "Purchase order"
                 payment_method = :po
                 payment_details[:po_num] = pay_type_params[:po_number]
-            else
-
         end
+
+       
 
             payment_result = Pago.make_payment(
                 order_id: id,
@@ -57,7 +57,5 @@ class Order < ApplicationRecord
             else
                 raise payment_result.error
             end
-                
-        
     end  
 end
