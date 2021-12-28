@@ -23,6 +23,9 @@ gem 'bcrypt', '~> 3.1.7'
 
 gem 'i18n-js'
 
+#for pagination
+gem 'kaminari', '~> 1.2.1'
+
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
