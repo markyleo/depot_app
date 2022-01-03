@@ -1,17 +1,18 @@
 Rails.application.routes.draw do
   
+  devise_for :users
   #get 'admin/index'
   #get 'sessions/new'
   #get 'sessions/create'
   #get 'sessions/destroy'
 
-  get 'admin' => 'admin#index'
+  root to: 'admin#index'
   
-  controller :sessions do
-      get 'login' => :new
-      post 'login' => :create
-      delete 'logout' => :destroy
-  end
+  #controller :sessions do
+      #get 'login' => :new
+      #post 'login' => :create
+      #delete 'logout' => :destroy
+  #end
 
   resources :users
   resources :products do

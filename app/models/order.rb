@@ -1,8 +1,9 @@
 #require 'active_model/serializers/xml'
 require 'pago'
+#include ActiveModel::Serializers::Xml
 
 class Order < ApplicationRecord
-    #include ActiveModel::Serializers::Xml
+    
 
     enum pay_type: {
         "Check" => 0,
