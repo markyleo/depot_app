@@ -55,8 +55,9 @@ class OrdersTest < ApplicationSystemTestCase
     Order.delete_all
 
     visit store_index_url
-  
-    first('.catalog li').click_on 'Add to Cart'
+    
+    click_on "Add to Cart", match: :first
+    #first('.catalog li').click_on 'Add to Cart'
     
     click_on 'Checkout'
     
