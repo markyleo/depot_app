@@ -68,6 +68,7 @@ group :test do
 
   gem 'rspec-rails', '~> 5.0.0'
   gem 'cucumber'
+  
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
@@ -77,3 +78,4 @@ gem 'capistrano-rails', group: :development
 gem 'capistrano-rvm', group: :development
 gem 'capistrano-bundler', group: :development
 gem 'capistrano-passenger', group: :development
+gem 'rails-controller-testing'
